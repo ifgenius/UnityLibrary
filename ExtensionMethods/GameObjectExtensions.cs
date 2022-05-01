@@ -6,6 +6,9 @@ namespace UnityLibrary.ExtensionMethods
 {
   public static class GameObjectExtensions
   {
+    public static bool HasComponent<T>(this GameObject self) where T : Component => 
+      self.GetComponent<T>() != null;
+
     public static T GetOrAddComponent<T>(this GameObject self) where T : Component
     {
       if (self.TryGetComponent<T>(out var component))
@@ -14,12 +17,6 @@ namespace UnityLibrary.ExtensionMethods
       component = self.AddComponent<T>();
       return component;
     }
-    
-    public static bool HasComponent<T>(this GameObject self) where T : Component => 
-      self.GetComponent<T>() != null;
-
-    public static void Destroy(this GameObject self) => 
-      Object.Destroy(self);
 
     public static void RemoveAllComponents<T>(this GameObject self) where T : Component
     {
@@ -28,6 +25,9 @@ namespace UnityLibrary.ExtensionMethods
         Object.Destroy(component);
       }
     }
+
+    public static void Destroy(this GameObject self) => 
+      Object.Destroy(self);
 
     public static List<GameObject> Children(this GameObject self)
     {
