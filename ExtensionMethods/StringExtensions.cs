@@ -12,11 +12,11 @@ namespace UnityLibrary.ExtensionMethods
     public static string AddColorTag(this string self, Color color) =>
       $"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{self}</color>";
 
-    public static string TrimEnd(this string self, string end) =>
-      self.EndsWith(end) ? self.Remove(self.Length - end.Length) : self;
+    public static string RemoveSuffix(this string self, string suffix) =>
+      self.EndsWith(suffix) ? self.Remove(self.Length - suffix.Length) : self;
 
-    public static string TrimStart(this string self, string start) =>
-      self.StartsWith(start) ? self.Remove(0, start.Length) : self;
+    public static string RemovePrefix(this string self, string prefix) =>
+      self.StartsWith(prefix) ? self.Remove(0, prefix.Length) : self;
 
     public static string DirectoryName(this string self) => 
       Path.GetDirectoryName(self);

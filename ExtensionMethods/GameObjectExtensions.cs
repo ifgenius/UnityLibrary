@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace UnityLibrary.ExtensionMethods
@@ -50,5 +49,8 @@ namespace UnityLibrary.ExtensionMethods
 
       return children;
     }
+
+    public static bool IsPrefab(this GameObject self) => 
+      self.scene.name == null;
   }
 }

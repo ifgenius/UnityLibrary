@@ -18,6 +18,9 @@ namespace UnityLibrary.ExtensionMethods
       Mathf.Approximately(self.y, other.y) &&
       Mathf.Approximately(self.z, other.z);
 
+    public static Vector3 Abs(this Vector3 self) =>
+      new Vector3(Mathf.Abs(self.x), Mathf.Abs(self.y), Mathf.Abs(self.z));
+
     public static Vector3 WithX(this Vector3 self, float x) => 
       new Vector3(x, self.y, self.z);
 
@@ -30,10 +33,10 @@ namespace UnityLibrary.ExtensionMethods
     public static Vector2 ToVector2(this Vector3 self) => 
       new Vector2(self.x, self.y);
 
-    public static Vector2Int ToVector2Int(this Vector3 self, Func<float, int> operation) => 
-      new Vector2Int(operation.Invoke(self.x), operation.Invoke(self.y));
+    public static Vector2Int ToVector2Int(this Vector3 self, Func<float, int> map) => 
+      new Vector2Int(map.Invoke(self.x), map.Invoke(self.y));
 
-    public static Vector3Int ToVector3Int(this Vector3 self, Func<float, int> operation) => 
-      new Vector3Int(operation.Invoke(self.x), operation.Invoke(self.y), operation.Invoke(self.z));
+    public static Vector3Int ToVector3Int(this Vector3 self, Func<float, int> map) => 
+      new Vector3Int(map.Invoke(self.x), map.Invoke(self.y), map.Invoke(self.z));
   }
 }
